@@ -308,112 +308,47 @@
             .cursor-dot, .cursor-ring { display: none; }
         }
 
-        /* === PROJECTS === */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 60px;
+        /* === CAROUSEL === */
+        .carousel-wrap { position:relative; }
+        .carousel-header { display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid var(--border); }
+        .carousel-counter { font-size:14px;color:var(--text-dim);font-weight:500;font-variant-numeric:tabular-nums; }
+        .carousel-counter .current { color:var(--gold);font-weight:700;font-size:18px; }
+        .carousel-counter .total { color:var(--text-dim); }
+        .carousel-nav { display:flex;gap:12px; }
+        .carousel-btn { width:48px;height:48px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s; }
+        .carousel-btn:hover { border-color:var(--gold);color:var(--gold);background:rgba(249,211,66,0.06); }
+        .carousel-btn:disabled { opacity:0.25;cursor:default;border-color:var(--border);color:var(--text-dim);background:transparent; }
+        .carousel-btn svg { width:18px;height:18px; }
+        .carousel-track-wrapper { overflow:hidden;border-radius:16px; }
+        .carousel-track { display:flex;transition:transform .5s cubic-bezier(0.16,1,0.3,1); }
+        .carousel-card { min-width:100%;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg);transition:border-color .3s; }
+        .carousel-card:hover { border-color:var(--border-hover); }
+        .card-content { padding:56px 52px;display:flex;flex-direction:column;justify-content:center; }
+        .card-num { font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px; }
+        .card-content h3 { font-size:clamp(24px,2.5vw,36px);font-weight:800;letter-spacing:-.5px;line-height:1.15;margin-bottom:16px; }
+        .card-content p { font-size:15px;color:var(--text-dim);line-height:1.75;margin-bottom:24px;max-width:440px; }
+        .card-tags { display:flex;flex-wrap:wrap;gap:8px; }
+        .card-tag { font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.5px;padding:5px 12px;border:1px solid rgba(249,211,66,0.2);border-radius:20px; }
+        .card-image { position:relative;overflow:hidden; }
+        .card-image-placeholder { width:100%;height:100%;min-height:420px;background:linear-gradient(135deg,#0F0F0F 0%,#1A1A1A 50%,#0F0F0F 100%);display:flex;align-items:center;justify-content:center; }
+        .card-image-placeholder span { font-size:13px;color:var(--text-dim);opacity:.3; }
+        .carousel-progress { margin-top:32px;display:flex;gap:8px; }
+        .progress-dot { height:3px;flex:1;background:var(--border);border-radius:2px;cursor:pointer;transition:all .3s; }
+        .progress-dot.active { background:var(--gold); }
+        .progress-dot:hover { background:rgba(249,211,66,0.4); }
+
+        .projects-cta { text-align:center; }
+
+        @media (max-width:1024px) {
+            .card-content { padding:40px 36px; }
+            .card-image-placeholder { min-height:340px; }
         }
 
-        .project-card {
-            position: relative;
-            aspect-ratio: 4/3;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: flex-end;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-        }
-
-        .project-card-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--bg-card) 0%, #0F0F0F 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-card-bg span {
-            font-size: 12px;
-            color: var(--text-dim);
-            opacity: 0.4;
-        }
-
-        .project-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .project-card:hover .project-card-overlay { opacity: 1; }
-
-        .project-card-info {
-            position: relative;
-            z-index: 2;
-            padding: 28px;
-            transform: translateY(12px);
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover .project-card-info {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .project-card-info h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .project-card-info p {
-            font-size: 12px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .project-tag {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--gold);
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(249, 211, 66, 0.15);
-        }
-
-        .projects-cta {
-            text-align: center;
-            margin-top: 48px;
-        }
-
-        @media (max-width: 1024px) {
-            .projects-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid { grid-template-columns: 1fr; }
+        @media (max-width:768px) {
+            .carousel-card { grid-template-columns:1fr; }
+            .card-content { padding:32px 28px; }
+            .card-image-placeholder { min-height:240px; }
+            .carousel-btn { width:40px;height:40px; }
         }
 
         /* === SECTIONS SHARED === */
@@ -945,39 +880,94 @@
         <div class="container">
         <div class="section-tag reveal">Selected Work</div>
         <h2 class="section-heading reveal reveal-delay-1">Projects that <span style="color: var(--gold)">speak for themselves.</span></h2>
-        <p class="section-desc reveal reveal-delay-2">A look at recent websites, systems, and platforms we've shipped.</p>
+        <p class="section-desc reveal reveal-delay-2">Web design projects built with strategy, precision, and performance in mind.</p>
 
-        <div class="projects-grid">
-            <a href="work.html" class="project-card reveal">
-                <span class="project-tag">Web Design</span>
-                <div class="project-card-bg"><span>Project image</span></div>
-                <div class="project-card-overlay"></div>
-                <div class="project-card-info">
-                    <h3>Project Name</h3>
-                    <p>Web Design &middot; Development</p>
+        <div class="carousel-wrap reveal" style="margin-top:60px;">
+            <div class="carousel-header">
+                <div class="carousel-counter">
+                    <span class="current" id="homeCurrentSlide">01</span>
+                    <span class="total"> / 06</span>
                 </div>
-            </a>
-            <a href="work.html" class="project-card reveal reveal-delay-1">
-                <span class="project-tag">Web Design</span>
-                <div class="project-card-bg"><span>Project image</span></div>
-                <div class="project-card-overlay"></div>
-                <div class="project-card-info">
-                    <h3>Project Name</h3>
-                    <p>Web Design &middot; Automation</p>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="homePrevBtn" aria-label="Previous project">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button class="carousel-btn" id="homeNextBtn" aria-label="Next project">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
                 </div>
-            </a>
-            <a href="work.html" class="project-card reveal reveal-delay-2">
-                <span class="project-tag">AI Solutions</span>
-                <div class="project-card-bg"><span>Project image</span></div>
-                <div class="project-card-overlay"></div>
-                <div class="project-card-info">
-                    <h3>Project Name</h3>
-                    <p>AI Integration &middot; CRM</p>
+            </div>
+
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="homeCarouselTrack">
+                    <div class="carousel-card">
+                        <div class="card-content">
+                            <div class="card-num">01</div>
+                            <h3>House Rules Scottsdale</h3>
+                            <p>Full website redesign for a premium entertainment venue featuring axe throwing, duckpin bowling, and curling. Built for conversion with integrated booking and event inquiry flows.</p>
+                            <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Development</span><span class="card-tag">Booking Integration</span></div>
+                        </div>
+                        <div class="card-image"><div class="card-image-placeholder"><span>Project Preview</span></div></div>
+                    </div>
+                    <div class="carousel-card">
+                        <div class="card-content">
+                            <div class="card-num">02</div>
+                            <h3>Recess Tempe</h3>
+                            <p>High-energy entertainment brand brought to life online. Responsive design with dynamic event calendars, group booking systems, and streamlined mobile experience.</p>
+                            <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Development</span><span class="card-tag">UX Strategy</span></div>
+                        </div>
+                        <div class="card-image"><div class="card-image-placeholder"><span>Project Preview</span></div></div>
+                    </div>
+                    <div class="carousel-card">
+                        <div class="card-content">
+                            <div class="card-num">03</div>
+                            <h3>LumberjAxes Westgate</h3>
+                            <p>Conversion-focused website for a competitive axe throwing venue. Clean layout designed to drive walk-ins, group bookings, and corporate event inquiries.</p>
+                            <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Development</span><span class="card-tag">Conversion Optimization</span></div>
+                        </div>
+                        <div class="card-image"><div class="card-image-placeholder"><span>Project Preview</span></div></div>
+                    </div>
+                    <div class="carousel-card">
+                        <div class="card-content">
+                            <div class="card-num">04</div>
+                            <h3>Executive Chefs at Home</h3>
+                            <p>Luxury private chef placement agency. Refined, editorial design built to communicate exclusivity while simplifying the client inquiry and chef onboarding process.</p>
+                            <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Development</span><span class="card-tag">Brand Strategy</span></div>
+                        </div>
+                        <div class="card-image"><div class="card-image-placeholder"><span>Project Preview</span></div></div>
+                    </div>
+                    <div class="carousel-card">
+                        <div class="card-content">
+                            <div class="card-num">05</div>
+                            <h3>Prestige Beverage Las Vegas</h3>
+                            <p>Professional web presence for a beverage distribution company. Clean structure focused on product catalog presentation, distributor inquiries, and brand credibility.</p>
+                            <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Development</span></div>
+                        </div>
+                        <div class="card-image"><div class="card-image-placeholder"><span>Project Preview</span></div></div>
+                    </div>
+                    <div class="carousel-card">
+                        <div class="card-content">
+                            <div class="card-num">06</div>
+                            <h3>Cuts &amp; Kicks Foundation</h3>
+                            <p>Nonprofit website for a Las Vegas foundation providing underprivileged children with new shoes and haircuts before the school year. Built to drive donations and volunteer signups.</p>
+                            <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Development</span><span class="card-tag">Nonprofit</span></div>
+                        </div>
+                        <div class="card-image"><div class="card-image-placeholder"><span>Project Preview</span></div></div>
+                    </div>
                 </div>
-            </a>
+            </div>
+
+            <div class="carousel-progress" id="homeCarouselProgress">
+                <div class="progress-dot active" data-index="0"></div>
+                <div class="progress-dot" data-index="1"></div>
+                <div class="progress-dot" data-index="2"></div>
+                <div class="progress-dot" data-index="3"></div>
+                <div class="progress-dot" data-index="4"></div>
+                <div class="progress-dot" data-index="5"></div>
+            </div>
         </div>
 
-        <div class="projects-cta reveal reveal-delay-3">
+        <div class="projects-cta reveal" style="margin-top:48px;">
             <a href="work.html" class="btn-ghost">
                 View All Projects
                 <svg viewBox="0 0 16 16" fill="none" style="width:14px;height:14px;"><path d="M3 13L13 3M13 3H5M13 3v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1027,6 +1017,43 @@
         window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
         const toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks');
         toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+        // Homepage carousel
+        (function() {
+            const track = document.getElementById('homeCarouselTrack');
+            const cards = track.querySelectorAll('.carousel-card');
+            const prevBtn = document.getElementById('homePrevBtn');
+            const nextBtn = document.getElementById('homeNextBtn');
+            const counter = document.getElementById('homeCurrentSlide');
+            const dots = document.querySelectorAll('#homeCarouselProgress .progress-dot');
+            let current = 0;
+            const total = cards.length;
+
+            function goTo(index) {
+                if (index < 0) index = 0;
+                if (index >= total) index = total - 1;
+                current = index;
+                track.style.transform = `translateX(-${current * 100}%)`;
+                counter.textContent = String(current + 1).padStart(2, '0');
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === total - 1;
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn.addEventListener('click', () => goTo(current + 1));
+            dots.forEach(dot => dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index))));
+
+            let touchStartX = 0;
+            const wrapper = track.parentElement;
+            wrapper.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+            wrapper.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
+            });
+
+            goTo(0);
+        })();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {

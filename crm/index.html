@@ -64,7 +64,8 @@
         .deliver-card:hover { background:var(--bg-card-hover);border-color:var(--border-hover); }
         .deliver-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s; }
         .deliver-card:hover::before { transform:scaleX(1); }
-        .deliver-number { font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:24px; }
+        .deliver-icon { width:40px;height:40px;border-radius:10px;border:1px solid rgba(249,211,66,0.2);background:rgba(249,211,66,0.06);display:flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--gold); }
+        .deliver-icon svg { width:20px;height:20px; }
         .deliver-card h3 { font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-.3px; }
         .deliver-card > p { font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:20px; }
         .deliver-items { padding-top:20px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px; }
@@ -196,19 +197,19 @@
         <h2 class="section-heading">The infrastructure behind consistent revenue.</h2>
         <div class="deliver-grid">
             <div class="deliver-card reveal">
-                <div class="deliver-number">01</div>
+                <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
                 <h3>Pipeline Management</h3>
                 <p>Clarity across every stage of your sales process.</p>
                 <div class="deliver-items"><div class="deliver-item"><span class="deliver-bullet"></span><span>Deal tracking</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Stage automation</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Task reminders</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Visibility across your team</span></div></div>
             </div>
             <div class="deliver-card reveal">
-                <div class="deliver-number">02</div>
+                <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
                 <h3>Automated Follow-Up</h3>
                 <p>Consistent communication without manual effort.</p>
                 <div class="deliver-items"><div class="deliver-item"><span class="deliver-bullet"></span><span>Email sequences</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>SMS automation</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Appointment reminders</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Re-engagement flows</span></div></div>
             </div>
             <div class="deliver-card reveal">
-                <div class="deliver-number">03</div>
+                <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
                 <h3>Reporting &amp; Insights</h3>
                 <p>Know what&#8217;s working &#8212; and what isn&#8217;t.</p>
                 <div class="deliver-items"><div class="deliver-item"><span class="deliver-bullet"></span><span>Conversion tracking</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Pipeline analytics</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Campaign performance</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Lead source reporting</span></div></div>

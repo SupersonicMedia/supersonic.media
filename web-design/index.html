@@ -64,7 +64,8 @@
         .deliver-card:hover { background:var(--bg-card-hover);border-color:var(--border-hover); }
         .deliver-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s; }
         .deliver-card:hover::before { transform:scaleX(1); }
-        .deliver-number { font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:24px; }
+        .deliver-icon { width:40px;height:40px;border-radius:10px;border:1px solid rgba(249,211,66,0.2);background:rgba(249,211,66,0.06);display:flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--gold); }
+        .deliver-icon svg { width:20px;height:20px; }
         .deliver-card h3 { font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-.3px; }
         .deliver-card > p { font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:20px; }
         .deliver-items { padding-top:20px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px; }
@@ -196,19 +197,19 @@
         <h2 class="section-heading">Strategy, design, and development &mdash; under one roof.</h2>
         <div class="deliver-grid">
             <div class="deliver-card reveal">
-                <div class="deliver-number">01</div>
+                <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/><circle cx="12" cy="12" r="3"/></svg></div>
                 <h3>Strategy &amp; Structure</h3>
                 <p>We define positioning, user flow, and conversion logic before design begins.</p>
                 <div class="deliver-items"><div class="deliver-item"><span class="deliver-bullet"></span><span>Messaging hierarchy</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Page architecture</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Conversion mapping</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Call-to-action strategy</span></div></div>
             </div>
             <div class="deliver-card reveal">
-                <div class="deliver-number">02</div>
+                <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a7 7 0 003.9-1.2L12 15l-3.9 3.8A7 7 0 0012 20z"/><path d="M12 15l3.9-3.8A7 7 0 0012 2a7 7 0 00-3.9 9.2L12 15z"/></svg></div>
                 <h3>Design</h3>
                 <p>Clean, modern interfaces built for clarity and confidence.</p>
                 <div class="deliver-items"><div class="deliver-item"><span class="deliver-bullet"></span><span>Custom UI design</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Responsive layouts</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Design systems</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Brand alignment</span></div></div>
             </div>
             <div class="deliver-card reveal">
-                <div class="deliver-number">03</div>
+                <div class="deliver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
                 <h3>Development</h3>
                 <p>High-performance builds with scalability in mind.</p>
                 <div class="deliver-items"><div class="deliver-item"><span class="deliver-bullet"></span><span>Custom development</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Performance optimization</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>SEO-ready structure</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Analytics integration</span></div><div class="deliver-item"><span class="deliver-bullet"></span><span>Clean, maintainable code</span></div></div>

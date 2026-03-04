@@ -11,7 +11,7 @@ document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    if (heroSection) {
+    if (heroSection && heroGlow) {
         const rect = heroSection.getBoundingClientRect();
         if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
             heroGlow.style.transform = `translate(${e.clientX - rect.left - 200}px, ${e.clientY - rect.top - 200}px)`;
@@ -40,7 +40,7 @@ hoverTargets.forEach(el => {
     el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
 });
 
-heroSection.style.cursor = 'none';
-document.querySelectorAll('.hero a, .hero button').forEach(el => {
+document.body.style.cursor = 'none';
+document.querySelectorAll('a, button').forEach(el => {
     el.style.cursor = 'none';
 });

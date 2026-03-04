@@ -235,6 +235,11 @@ footer {
 .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
 .footer-social a svg { width: 15px; height: 15px; }
 
+/* === CUSTOM CURSOR === */
+.cursor-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: difference; }
+.cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all 0.15s ease-out; opacity: 0.5; }
+.cursor-ring.hovering { width: 64px; height: 64px; border-color: var(--gold); opacity: 0.8; background: rgba(249, 211, 66, 0.06); }
+
 /* === ANIMATIONS === */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -287,4 +292,5 @@ footer {
 
     footer { padding: 30px 24px 20px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .cursor-dot, .cursor-ring { display: none; }
 }

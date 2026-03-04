@@ -31,10 +31,6 @@ const jsonLd = {
     canonicalUrl="https://supersonic.media/"
     jsonLd={jsonLd}
 >
-    <!-- Custom cursor -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
     <!-- Hero -->
     <section class="hero" id="heroSection">
         <div class="hero-bg-swoosh"></div>
@@ -307,7 +303,6 @@ const jsonLd = {
     </section>
 
     <script src="../scripts/reveal.js"></script>
-    <script src="../scripts/cursor.js"></script>
     <script src="../scripts/carousel.js"></script>
 </Layout>
 
@@ -330,13 +325,8 @@ const jsonLd = {
     .hero-sub { max-width: 520px; margin-top: 28px; font-size: 16px; color: var(--text-dim); line-height: 1.75; font-weight: 400; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
     .hero-cta-row { display: flex; align-items: center; gap: 16px; margin-top: 44px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.65s; }
 
-    /* === CUSTOM CURSOR === */
-    .cursor-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; mix-blend-mode: difference; }
-    .cursor-ring { width: 40px; height: 40px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all 0.15s ease-out; opacity: 0.5; }
-    .cursor-ring.hovering { width: 64px; height: 64px; border-color: var(--gold); opacity: 0.8; background: rgba(249, 211, 66, 0.06); }
     .hero-glow { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(249, 211, 66, 0.07) 0%, transparent 70%); pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s; }
     .hero:hover .hero-glow { opacity: 1; }
-    @media (max-width: 768px) { .cursor-dot, .cursor-ring { display: none; } }
 
     /* === CAROUSEL === */
     .carousel-wrap { position: relative; }

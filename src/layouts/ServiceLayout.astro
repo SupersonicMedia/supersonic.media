@@ -1,0 +1,110 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    canonicalUrl: string;
+}
+
+const { title, description, canonicalUrl } = Astro.props;
+---
+<Layout
+    title={title}
+    description={description}
+    ogTitle={title}
+    ogDescription={description}
+    ogUrl={canonicalUrl}
+    canonicalUrl={canonicalUrl}
+>
+    <slot />
+    <script src="../scripts/reveal.js"></script>
+</Layout>
+
+<style is:global>
+    /* === SERVICE PAGE STYLES === */
+    .service-hero { padding: 180px 80px 100px; max-width: 1600px; margin: 0 auto; }
+    .service-hero .tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; opacity: 0; animation: fadeUp .7s ease forwards .2s; }
+    .service-hero h1 { font-size: clamp(36px,5vw,64px); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; max-width: 700px; opacity: 0; animation: fadeUp .7s ease forwards .35s; }
+    .service-hero h1 .gold { color: var(--gold); }
+    .service-hero .hero-sub { margin-top: 24px; font-size: 16px; color: var(--text-dim); line-height: 1.75; max-width: 540px; opacity: 0; animation: fadeUp .7s ease forwards .5s; }
+    .service-hero .hero-line { width: 60px; height: 2px; background: var(--gold); margin-top: 40px; opacity: 0; animation: fadeUp .7s ease forwards .65s; }
+
+    .overview { padding: 0 80px 120px; max-width: 1600px; margin: 0 auto; }
+    .overview-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; padding-top: 80px; border-top: 1px solid var(--border); }
+    .overview-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .overview-text p { font-size: 15px; color: var(--text-dim); line-height: 1.85; margin-bottom: 20px; }
+    .overview-text p:last-child { margin-bottom: 0; }
+    .overview-text strong { color: var(--text); font-weight: 600; }
+    .overview-principles { display: flex; flex-direction: column; gap: 20px; }
+    .principle { padding: 24px 28px; border: 1px solid var(--border); border-radius: 8px; transition: all .3s; }
+    .principle:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+    .principle h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .principle p { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin: 0; }
+
+    .deliver { padding: 120px 80px; max-width: 1600px; margin: 0 auto; }
+    .deliver .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .deliver .section-heading { font-size: clamp(28px,3.5vw,44px); font-weight: 800; letter-spacing: -.5px; line-height: 1.1; max-width: 600px; }
+    .deliver-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 60px; }
+    .deliver-card { padding: 48px 36px; border: 1px solid var(--border); position: relative; transition: all .35s; }
+    .deliver-card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); }
+    .deliver-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
+    .deliver-card:hover::before { transform: scaleX(1); }
+    .deliver-icon { width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(249,211,66,0.2); background: rgba(249,211,66,0.06); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--gold); }
+    .deliver-icon svg { width: 20px; height: 20px; }
+    .deliver-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.3px; }
+    .deliver-card > p { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
+    .deliver-items { padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    .deliver-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-dim); }
+    .deliver-bullet { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    .performance { padding: 120px 80px; max-width: 1600px; margin: 0 auto; }
+    .perf-header { max-width: 600px; margin-bottom: 60px; }
+    .perf-header .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .perf-header h2 { font-size: clamp(28px,3.5vw,44px); font-weight: 800; letter-spacing: -.5px; line-height: 1.1; }
+    .perf-header p { margin-top: 16px; font-size: 15px; color: var(--text-dim); line-height: 1.75; }
+    .perf-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .perf-item { padding: 40px 32px; border: 1px solid var(--border); transition: background .3s; }
+    .perf-item:hover { background: var(--bg-card-hover); }
+    .perf-icon { font-size: 28px; margin-bottom: 16px; }
+    .perf-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .perf-item p { font-size: 13px; color: var(--text-dim); line-height: 1.65; }
+
+    .ideal { padding: 100px 80px; max-width: 1600px; margin: 0 auto; }
+    .ideal-inner { padding: 60px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+    .ideal .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .ideal h2 { font-size: clamp(24px,3vw,36px); font-weight: 800; letter-spacing: -.5px; margin-bottom: 40px; }
+    .ideal-items { display: flex; flex-direction: column; gap: 16px; }
+    .ideal-item { display: flex; align-items: baseline; gap: 14px; font-size: 15px; color: var(--text-dim); line-height: 1.7; }
+    .ideal-arrow { color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+    .service-cta { padding: 160px 80px; text-align: center; position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at center,rgba(249,211,66,0.05) 0%,transparent 65%); pointer-events: none; }
+    .service-cta h2 { font-size: clamp(32px,4.5vw,60px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; position: relative; }
+    .service-cta h2 .gold { color: var(--gold); }
+    .service-cta .cta-sub { max-width: 480px; margin: 24px auto 0; font-size: 15px; color: var(--text-dim); line-height: 1.7; }
+    .cta-btn-wrap { margin-top: 40px; position: relative; }
+
+    @media (max-width: 1024px) {
+        .service-hero { padding: 160px 40px 80px; }
+        .overview { padding: 0 40px 80px; }
+        .overview-inner { grid-template-columns: 1fr; gap: 40px; }
+        .deliver { padding: 80px 40px; }
+        .deliver-grid { grid-template-columns: 1fr; }
+        .performance { padding: 80px 40px; }
+        .perf-grid { grid-template-columns: 1fr 1fr; }
+        .ideal { padding: 60px 40px; }
+        .ideal-inner { padding: 40px; }
+        .service-cta { padding: 100px 40px; }
+    }
+    @media (max-width: 768px) {
+        .service-hero { padding: 120px 24px 60px; }
+        .overview { padding: 0 24px 60px; }
+        .deliver { padding: 60px 24px; }
+        .performance { padding: 60px 24px; }
+        .perf-grid { grid-template-columns: 1fr; }
+        .ideal { padding: 40px 24px; }
+        .ideal-inner { padding: 28px; }
+        .service-cta { padding: 80px 24px; }
+    }
+</style>
